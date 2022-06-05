@@ -64,27 +64,43 @@ function round(playerchoice, computerchoice)
             result="draw"
         }
     }
-    if(result=="draw")
-    {
-        return "It's a tie! You and your opponent made the same choice"
-    }
-    else if (result=="win")
-    {
-        return `You win! ${playerchoice} beats ${computerchoice}`
-    }
-    else if (result=="lose")
-    {
-        return `You lose! ${computerchoice} beats ${playerchoice}`
-    }
+    return result;
 }
 
 function game()
 {
     let playerscore=0
     let computerscore=0
-    for (let i=0;i<5;i++)
+    let computerchoice=""
+    let playerchoice=""
+    while((computerscore+playerscore)<5)
     {
-        let res=round(prompt("Choose your object").toLowerCase(),computerplay());
-        console.log(res);
+        playerchoice=prompt("Choose your object").toLowerCase()
+        computerchoice=computerplay()
+    
+        let result=round(playerchoice,computerchoice);
+        if(result=="draw")
+        {
+            console.log( "It's a tie! You and your opponent made the same choice")
+        }
+        else if (result=="win")
+        {
+            playerscore++;
+            console.log( `You win! ${playerchoice} beats ${computerchoice}`)
+        }
+        else if (result=="lose")
+        {
+            computerscore++;
+            console.log(`You lose! ${computerchoice} beats ${playerchoice}`)
+        }
+        console.log(result);
+    }
+    if(playerscore>computerscore)
+    {
+        console.log(`You win ${playerscore} - ${computerscore}`)
+    }
+    else
+    {
+        console.log(`You lose ${playerscore} - ${computerscore}`)
     }
 }
