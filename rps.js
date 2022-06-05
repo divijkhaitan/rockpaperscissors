@@ -14,7 +14,6 @@ function computerplay()
     {
         computerchoice="scissors";
     }
-    console.log(computerchoice);
     return computerchoice;
 }
 
@@ -67,17 +66,25 @@ function round(playerchoice, computerchoice)
     }
     if(result=="draw")
     {
-        console.log("It's a tie! You and your opponent made the same choice")
         return "It's a tie! You and your opponent made the same choice"
     }
     else if (result=="win")
     {
-        console.log(`You win! ${playerchoice} beats ${computerchoice}`)
         return `You win! ${playerchoice} beats ${computerchoice}`
     }
     else if (result=="lose")
     {
-        console.log(`You lose! ${computerchoice} beats ${playerchoice}`)
         return `You lose! ${computerchoice} beats ${playerchoice}`
+    }
+}
+
+function game()
+{
+    let playerscore=0
+    let computerscore=0
+    for (let i=0;i<5;i++)
+    {
+        let res=round(prompt("Choose your object").toLowerCase(),computerplay());
+        console.log(res);
     }
 }
