@@ -1,5 +1,29 @@
+*{
+    background-color: blue;
+    color: antiquewhite;
+}
+button{
+    border: solid black 2px;
+    background-color: purple;
+}
 .container{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 900px;
+}
+.buttons{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+}
+.score{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.message{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
