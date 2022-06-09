@@ -1,9 +1,9 @@
 const buttons = document.querySelectorAll('.options');
-buttons.forEach(button=>button.addEventListener('click',clicked))
 let playerscore=0
-    let computerscore=0
-    let computerchoice=""
-    let playerchoice=""
+let computerscore=0
+let computerchoice=""
+let playerchoice=""
+buttons.forEach(button=>button.addEventListener('click',clicked))
 
 function game()
 {
@@ -111,4 +111,13 @@ function clicked(event)
 {
     playerchoice= event.target.getAttribute('id');
     computerchoice=computerplay();
+    if(playerscore<5 &&computerscore<5)
+    {
+        round(playerchoice,computerchoice)
+    }
+    if(playerscore==5 || computerscore==5)
+    {
+        buttons.forEach(button=>button.removeEventListener('click',clicked))
+        //show message highliting win/loss
+    }
 }
