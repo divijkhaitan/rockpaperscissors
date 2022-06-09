@@ -1,15 +1,12 @@
-
-const buttons=document.querySelector('div')
-console.log(buttons)
+const buttons = document.querySelectorAll('.options');
 buttons.forEach(button=>button.addEventListener('click',clicked))
-
-
-function game()
-{
-    let playerscore=0
+let playerscore=0
     let computerscore=0
     let computerchoice=""
     let playerchoice=""
+
+function game()
+{
     while((computerscore<5)&&(playerscore<5))
     {
         playerchoice=prompt("Choose your object").toLowerCase()
@@ -112,5 +109,6 @@ function round(playerchoice, computerchoice)
 }
 function clicked(event)
 {
-    console.log(event);
+    playerchoice= event.target.getAttribute('id');
+    computerchoice=computerplay();
 }
