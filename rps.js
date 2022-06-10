@@ -1,4 +1,8 @@
 const buttons = document.querySelectorAll('.options');
+const psidv=  document.querySelector('.scoreplay')
+const csidv=  document.querySelector('.scorecomp')
+const messidv=  document.querySelector('.message')
+const resdiv=  document.querySelector('.results')
 let playerscore=0
 let computerscore=0
 let computerchoice=""
@@ -15,28 +19,30 @@ function game()
         let result=round(playerchoice,computerchoice);
         if(result=="draw")
         {
-            console.log( "It's a tie! You and your opponent made the same choice")
+            messidv.textContent= `It's a tie! Both players chose ${computerchoice}`;
         }
         else if (result=="win")
         {
             playerscore++;
-            console.log( `You win! ${playerchoice} beats ${computerchoice}`)
+            messidv.textContent=`You win! ${playerchoice} beats ${computerchoice}`;
+            psidv.textContent=playerscore
         }
         else if (result=="lose")
         {
             computerscore++;
-            console.log(`You lose! ${computerchoice} beats ${playerchoice}`)
+            messidv.textContent=`You lose! ${computerchoice} beats ${playerchoice}`;
+            csidv.textContent=computerscore
         }
         console.log(result);
     }
-    if(playerscore>computerscore)
+    /*if(playerscore>computerscore)
     {
         console.log(`You win ${playerscore} - ${computerscore}`)
     }
     else
     {
         console.log(`You lose ${playerscore} - ${computerscore}`)
-    }
+    }*/
 }
 
 function computerplay()
@@ -111,13 +117,39 @@ function clicked(event)
 {
     playerchoice= event.target.getAttribute('id');
     computerchoice=computerplay();
+    console.log(playerchoice)
     if(playerscore<5 &&computerscore<5)
     {
-        round(playerchoice,computerchoice)
+        let result=round(playerchoice,computerchoice);
+        if(result=="draw")
+        {
+            messidv.textContent= `It's a tie! Both players chose ${computerchoice}`;
+        }
+        else if (result=="win")
+        {
+            playerscore++;
+            messidv.textContent=`You win! ${playerchoice} beats ${computerchoice}`;
+            psidv.textContent=playerscore
+        }
+        else if (result=="lose")
+        {
+            computerscore++;
+            messidv.textContent=`You lose! ${computerchoice} beats ${playerchoice}`;
+            csidv.textContent=computerscore
+        }
+    
     }
     if(playerscore==5 || computerscore==5)
     {
         buttons.forEach(button=>button.removeEventListener('click',clicked))
         //show message highliting win/loss
+        if(playerscore==5)
+        {
+            resdiv.textContent=` You win! Congratulations`
+        }
+        else if(computerscore==5)
+        {
+            resdiv.textContent=` You lose. Maybe next time`
+        }
     }
 }

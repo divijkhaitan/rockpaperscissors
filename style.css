@@ -27,3 +27,8 @@ button{
     align-items: center;
     flex-direction: column;
 }
+.results{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
